@@ -10,27 +10,13 @@ on:
     branches: [ master ]
 
 jobs:
-  build:
-    name: Build Job
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-      
-    - name: Set up JDK 16
-      uses: actions/setup-java@v2
-      with:
-        java-version: '16'
-        distribution: 'adopt'
-        
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
-
   version:
     name: Version Job
     runs-on: ubuntu-latest
-
+    outputs:
+      current-version: ${{ steps.gitversion.outputs.version }}
+      previous-version: ${{ steps.gitversion.outputs.previous-version }}
+      
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -45,4 +31,23 @@ jobs:
       - name: Display GitVersion outputs
         run: |
           echo "Version: ${{ steps.gitversion.outputs.version }}"
-          echo "Version: ${{ steps.gitversion.outputs.previous-version }}"
+          echo "Previous Version: ${{ steps.gitversion.outputs.previous-version }}"
+          
+  build:
+    name: Build Job
+    runs-on: ubuntu-latest
+    needs: version
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Set up JDK 16
+      uses: actions/setup-java@v2
+      with:
+        java-version: '16'
+        distribution: 'adopt'
+        
+    - name: Build with Maven
+      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.current-version}} --file pom.xml
+

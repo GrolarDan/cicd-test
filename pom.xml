@@ -10,11 +10,12 @@
     </parent>
     <groupId>cz.masci</groupId>
     <artifactId>cicd-github-actions</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <name>CI/CD Github Actions</name>
     <description>Demo project for Spring Boot with CI/CD GitHub Actions</description>
     
     <properties>
+        <revision>1.0.0-SNAPSHOT</revision>
         <java.version>16</java.version>
     </properties>
     
@@ -52,5 +53,36 @@
             </plugin>
         </plugins>
     </build>
-
+    
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                        <configuration>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
+                            <mainClass>cz.masci.cicd.Application</mainClass>
+                            <executable>true</executable>
+                            <skip>false</skip>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>build-info</goal>
+                                    <goal>repackage</goal>
+                                </goals>
+                                <configuration>
+                                    <classifier>exec</classifier>
+                                    <outputDirectory>${project.build.directory}/dist</outputDirectory>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
