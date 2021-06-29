@@ -81,6 +81,22 @@
                             </execution>
                         </executions>
                     </plugin>
+                    <plugin>
+                        <groupId>org.jreleaser</groupId>
+                        <artifactId>jreleaser-maven-plugin</artifactId>
+                        <version>0.4.0</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>config</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <goals>
+                            <goal>full-release</goal>
+                        </goals>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
