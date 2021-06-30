@@ -53,3 +53,6 @@ jobs:
         JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.current-version}} --file pom.xml
 
+    - name: Display JReleaser output
+      run: |
+        cat /home/runner/work/cicd-test/cicd-test/target/jreleaser/output.properties
