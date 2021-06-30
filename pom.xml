@@ -89,13 +89,10 @@
                             <execution>
                                 <phase>package</phase>
                                 <goals>
-                                    <goal>config</goal>
+                                    <goal>full-release</goal>
                                 </goals>
                             </execution>
                         </executions>
-                        <goals>
-                            <goal>full-release</goal>
-                        </goals>
                     </plugin>
                 </plugins>
             </build>
