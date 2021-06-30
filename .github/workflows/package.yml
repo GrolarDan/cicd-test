@@ -14,7 +14,7 @@ jobs:
     name: Version Job
     runs-on: ubuntu-latest
     outputs:
-      current-version: ${{ steps.gitversion.outputs.version }}
+      version: ${{ steps.gitversion.outputs.version }}
       previous-version: ${{ steps.gitversion.outputs.previous-version }}
       
     steps:
@@ -51,7 +51,8 @@ jobs:
     - name: Build with Maven
       env:
         JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.current-version}} --file pom.xml
+        JRELEASER_TAG_NAME: "v${{ needs.version.outputs.version }}"
+      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.version}} --file pom.xml
 
     - name: Display JReleaser output
       run: |
