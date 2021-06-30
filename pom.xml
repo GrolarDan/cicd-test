@@ -89,6 +89,7 @@
                             <execution>
                                 <phase>package</phase>
                                 <goals>
+                                    <goal>config</goal>
                                     <goal>full-release</goal>
                                 </goals>
                             </execution>
