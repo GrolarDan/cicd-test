@@ -6,6 +6,8 @@ name: Java CI with Maven
 on:
   push:
     branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   version:
@@ -49,8 +51,8 @@ jobs:
     - name: Build with Maven
       env:
         JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        JRELEASER_TAG_NAME: "v${{ needs.version.outputs.version }}"
-      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.version}} --file pom.xml
+#      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.version}} --file pom.xml
+      run: mvn -B package -Prelease -Drevision=0.0.2 --file pom.xml
 
     - name: Display JReleaser output
       run: |
