@@ -89,16 +89,40 @@
                             <execution>
                                 <configuration>
                                     <jreleaser>
+                                        <release>
+                                            <github>
+                                                <tagName>{{project.version}}</tagName>
+                                            </github>
+                                        </release>
                                         <assemble>
-                                            <enabled>true</enabled>
                                             <jlink>
                                                 <jreleaser-standalone>
+                                                    <active>ALWAYS</active>
+                                                    <name>jreleaser-standalone</name>
                                                     <mainJar>
                                                         <path>${project.build.directory}/dist/${project.artifactId}-${project.version}-exec.jar</path>
                                                     </mainJar>
+                                                    <imageName>app</imageName>
+                                                    <executable>app</executable>
+                                                    <extraProperties>
+                                                        <sdkmanSkip>true</sdkmanSkip>
+                                                    </extraProperties>
                                                 </jreleaser-standalone>
                                             </jlink>
                                         </assemble>
+                                        <distributions>
+                                            <jreleaser-standalone>
+                                                <active>ALWAYS</active>
+                                                <type>JLINK</type>
+                                                <name>jreleaser-standalone</name>
+                                                <artifacts>
+                                                    <artifact>
+                                                        <path>${project.build.directory}/${project.artifactId}-${project.version}-win.zip</path>
+                                                        <platform>windows</platform>
+                                                    </artifact>
+                                                </artifacts>
+                                            </jreleaser-standalone>
+                                        </distributions>
                                     </jreleaser>
                                 </configuration>
                                 <phase>package</phase>
