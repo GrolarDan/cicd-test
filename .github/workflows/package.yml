@@ -48,11 +48,13 @@ jobs:
         java-version: '16'
         distribution: 'adopt'
         
+    - name: JDeps modules list
+      run: jdeps --multi-release base --print-module-deps --ignore-missing-deps /home/runner/work/cicd-test/cicd-test/target/dist/cicd-github-actions-${{ needs.version.outputs.version }}-exec.jar
+        
     - name: Build with Maven
       env:
         JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.version}} --file pom.xml -X
-#      run: mvn -B package -Prelease -Drevision=0.0.2-SNAPSHOT -file pom.xml
+      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.version}} --file pom.xml
 
     - name: Display JReleaser output
       run: |
