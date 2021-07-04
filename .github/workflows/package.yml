@@ -51,7 +51,7 @@ jobs:
     - name: Build with Maven
       env:
         JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.version}} --file pom.xml -e
+      run: mvn -B package -Prelease -Drevision=${{ needs.version.outputs.version}} --file pom.xml -X
 #      run: mvn -B package -Prelease -Drevision=0.0.2-SNAPSHOT -file pom.xml
 
     - name: Display JReleaser output
