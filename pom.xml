@@ -117,11 +117,6 @@
                                                         <moduleName>jdk.jfr</moduleName>
                                                         <moduleName>jdk.unsupported</moduleName>                                                        
                                                     </moduleNames>
-                                                    <imageName>app</imageName>
-                                                    <executable>app</executable>
-                                                    <extraProperties>
-                                                        <sdkmanSkip>true</sdkmanSkip>
-                                                    </extraProperties>
                                                 </jreleaser-standalone>
                                             </jlink>
                                         </assemble>
@@ -133,6 +128,7 @@
                                                 <artifacts>
                                                     <artifact>
                                                         <path>${project.build.directory}/${project.artifactId}-${project.version}.zip</path>
+                                                        <platform>linux</platform>
                                                     </artifact>
                                                 </artifacts>
                                             </jreleaser-standalone>
