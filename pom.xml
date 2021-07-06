@@ -127,7 +127,7 @@
                                                 <name>jreleaser-standalone</name>
                                                 <artifacts>
                                                     <artifact>
-                                                        <path>${project.build.directory}/${project.artifactId}-${project.version}.zip</path>
+                                                        <path>${project.build.directory}/jreleaser/assemble/jreleaser-standalone/jlink/${project.artifactId}-${project.version}-linux-x86_64.zip</path>
                                                         <platform>linux</platform>
                                                     </artifact>
                                                 </artifacts>
