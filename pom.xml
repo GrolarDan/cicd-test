@@ -97,9 +97,9 @@
                                         </release>
                                         <assemble>
                                             <jlink>
-                                                <jreleaser-standalone>
+                                                <cicd-test>
                                                     <active>ALWAYS</active>
-                                                    <name>jreleaser-standalone</name>
+                                                    <name>cicd-test</name>
                                                     <imageName>${project.artifactId}-${project.version}</imageName>
                                                     <exported>false</exported>
                                                     <mainJar>
@@ -119,21 +119,27 @@
                                                         <moduleName>jdk.jfr</moduleName>
                                                         <moduleName>jdk.unsupported</moduleName>                                                        
                                                     </moduleNames>
-                                                </jreleaser-standalone>
+                                                    <targetJdks>
+                                                        <targetJdk>
+                                                            <path>{{ Env.JAVA_HOME }}</path>
+                                                            <platform>linux</platform>
+                                                        </targetJdk>
+                                                    </targetJdks>
+                                                </cicd-test>
                                             </jlink>
                                         </assemble>
                                         <distributions>
-                                            <jreleaser-standalone>
+                                            <cicd-test>
                                                 <active>ALWAYS</active>
                                                 <type>JLINK</type>
-                                                <name>jreleaser-standalone</name>
+                                                <name>cicd-test</name>
                                                 <artifacts>
                                                     <artifact>
-                                                        <path>${project.build.directory}/jreleaser/assemble/jreleaser-standalone/jlink/${project.artifactId}-${project.version}-linux-x86_64.zip</path>
+                                                        <path>{{ outputDirectory }}/{{ assembleDirectory }}/{{ distributionName }}/jlink/${project.artifactId}-${project.version}-linux.zip</path>
                                                         <platform>linux</platform>
                                                     </artifact>
                                                 </artifacts>
-                                            </jreleaser-standalone>
+                                            </cicd-test>
                                         </distributions>
                                     </jreleaser>
                                 </configuration>
