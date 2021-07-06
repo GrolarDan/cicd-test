@@ -149,7 +149,7 @@
                                                             <platform>linux</platform>
                                                         </targetJdk>
                                                         <targetJdk>
-                                                            <path>${project.build.directory}/jdks</path>
+                                                            <path>${project.build.directory}/jdks/jdk-16.0.1+9</path>
                                                             <platform>windows</platform>
                                                         </targetJdk>
                                                     </targetJdks>
