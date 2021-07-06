@@ -135,7 +135,7 @@
                                                 <name>cicd-test</name>
                                                 <artifacts>
                                                     <artifact>
-                                                        <path>{{ outputDirectory }}/{{ assembleDirectory }}/{{ distributionName }}/jlink/${project.artifactId}-${project.version}-linux.zip</path>
+                                                        <path>{{ assembleDirectory }}/{{ distributionName }}/jlink/${project.artifactId}-${project.version}-linux.zip</path>
                                                         <platform>linux</platform>
                                                     </artifact>
                                                 </artifacts>
