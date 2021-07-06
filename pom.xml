@@ -91,7 +91,8 @@
                                     <jreleaser>
                                         <release>
                                             <github>
-                                                <tagName>{{project.version}}</tagName>
+                                                <tagName>${project.version}</tagName>
+                                                <releaseName>Release v${project.version}</releaseName>
                                             </github>
                                         </release>
                                         <assemble>
