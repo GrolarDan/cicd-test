@@ -86,16 +86,24 @@
                         <groupId>org.jreleaser</groupId>
                         <artifactId>jdks-maven-plugin</artifactId>
                         <version>${jreleaser.version}</version>
-                        <configuration>
-                            <jdks>
-                                <jdk>
-                                    <name>adopt16Windows</name>
-                                    <platform>windows</platform>
-                                    <url>https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16.0.1%2B9/OpenJDK16U-jdk_x64_windows_hotspot_16.0.1_9.zip</url>
-                                    <checksum>0a91e179c4d34b5d905fd2945a21927a6acb798b4e8f2d528ece32c025bbcaff</checksum>
-                                </jdk>
-                            </jdks>
-                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>setup-jdks</goal>
+                                </goals>
+                                <configuration>
+                                    <jdks>
+                                        <jdk>
+                                            <name>adopt16Windows</name>
+                                            <platform>windows</platform>
+                                            <url>https://github.com/AdoptOpenJDK/openjdk16-binaries/releases/download/jdk-16.0.1%2B9/OpenJDK16U-jdk_x64_windows_hotspot_16.0.1_9.zip</url>
+                                            <checksum>0a91e179c4d34b5d905fd2945a21927a6acb798b4e8f2d528ece32c025bbcaff</checksum>
+                                        </jdk>
+                                    </jdks>
+                                </configuration>                                                        
+                            </execution>
+                        </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.jreleaser</groupId>
