@@ -4,8 +4,7 @@
 name: Release Workflow
 
 on:
-  push:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
   version:
