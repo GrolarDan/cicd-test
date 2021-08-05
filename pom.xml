@@ -123,7 +123,7 @@
                                                     <active>RELEASE</active>
                                                     <imageName>${project.artifactId}-${project.version}</imageName>
                                                     <executable>app</executable>
-                                                    <exported>false</exported>
+                                                    <exported>true</exported>
                                                     <mainJar>
                                                         <path>${project.build.directory}/dist/${project.artifactId}-${project.version}-exec.jar</path>
                                                     </mainJar>
